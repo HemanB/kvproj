@@ -1,0 +1,2 @@
+Testing 256 kv pairs for delete
+Testing delete...Success

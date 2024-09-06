@@ -1,0 +1,4 @@
+Testing 7 kv pairs for all functions
+Testing deserialize...Success!
+Testing lookup...Success
+Testing delete...Success

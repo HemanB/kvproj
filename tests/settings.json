@@ -1,0 +1,31 @@
+{
+  "mode": "exe",
+  "penalty_exitcode_nonzero": 0.75,
+  "penalty_valgrind": 0.5,
+  "test_suites": {
+    "kv_test": {
+      "tests": [
+	      { "desc": "all 2049",  "args": ["-n", "1", "-f", "lookup"],  "valgrind": true, "points": 1 },
+        { "desc": "lookup 2",  "args": ["-n", "2", "-f", "lookup"],  "valgrind": true, "points": 1 },
+        { "desc": "lookup 7",  "args": ["-n", "7", "-f", "lookup"],   "valgrind": true, "points": 1 },
+        { "desc": "lookup default",  "args": ["-f", "lookup"],   "valgrind": true, "points": 1 },
+        { "desc": "lookup 1234",  "args": ["-n", "1234", "-f", "lookup"],   "valgrind": true, "points": 1 },
+        { "desc": "delete 1",  "args": ["-n", "1", "-f", "delete"],   "valgrind": true, "points": 3 },
+        { "desc": "delete 2",  "args": ["-n", "2", "-f", "delete"],   "valgrind": true, "points": 3 },
+        { "desc": "delete 7",  "args": ["-n", "7", "-f", "delete"],   "valgrind": true, "points": 3 },
+        { "desc": "delete default",  "args": ["-f", "delete"],   "valgrind": true, "points": 3 },
+        { "desc": "delete 1234",  "args": ["-n", "1234", "-f", "delete"],   "valgrind": true, "points": 3 },
+        { "desc": "deserialize 1",  "args": ["-n", "1", "-f", "deserialize"],   "valgrind": true, "points": 9 },
+        { "desc": "deserialize 2",  "args": ["-n 2", "-f", "deserialize"],   "valgrind": true, "points": 9 },
+        { "desc": "deserialize 7",  "args": ["-n 7", "-f", "deserialize"],   "valgrind": true, "points": 9 },
+        { "desc": "deserialize default",  "args": ["-f", "deserialize"],   "valgrind": true, "points": 9 },
+        { "desc": "deserialize 1023",  "args": ["-n", "1023", "-f", "deserialize"],   "valgrind": true, "points": 9 },
+        { "desc": "all 1",  "args": ["-n", "1"],   "valgrind": true, "points": 7 },
+        { "desc": "all 2",  "args": ["-n", "2"],   "valgrind": true, "points": 7 },
+        { "desc": "all 7",  "args": ["-n", "7"],   "valgrind": true, "points": 7 },
+        { "desc": "all default",  "args": [""],   "valgrind": true, "points": 7 },
+        { "desc": "all 2049",  "args": ["-n", "2049"],   "valgrind": true, "points": 7 }
+      ]
+    }
+  }
+}
