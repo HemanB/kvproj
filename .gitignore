@@ -1,0 +1,13 @@
+kv_test
+kv_store.o
+*_handout
+*.dSYM
+.DS_Store
+results.json
+__pycache__/
+*.pyc
+tests/*diff*
+tests/*actual*
+autograder/*.zip
+autograder/tests
+vgcore*
