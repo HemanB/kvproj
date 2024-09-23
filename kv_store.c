@@ -32,10 +32,37 @@
  * - Once you're done populating an individual node of the linked list, you are
  *   to actually add it to the list. This can be done by appending the node to
  *   the tail of the list. Think about how to do this...
+ *   string|key|size|value
  */
 
 KVPAIR *deserialize(char *buf, size_t buffer_size) {
-    return NULL;
+    char* pointer = buf;
+    char* end = buf + buffer_size;
+
+    KVPAIR* head = NULL;
+    KVPAIR* tail = NULL;
+
+    while (pointer+sizeof(long)+sizeof(unsigned int) < end) {
+        KVPAIR *node = (KVPAIR*)malloc(sizeof(KVPAIR));
+        
+        memcpy(&(node->key), pointer, sizeof(long)); //cpy info at ptr, of size type long, to key
+        pointer+=sizeof(long); //move ptr by size type long
+        memcpy(&(node->size), pointer, sizeof(unsigned int)); //cpy info at ptr, of size type uns int, to size
+        pointer+=sizeof(unsigned int); //move ptr by size type uns int
+        node->val = (char*)malloc((node->size)+1); //allocate space for value
+        memcpy(node->val, pointer, node->size); //cpy value to after size's spot in buf
+        node->val[node->size] = '\0'; //add null term after value
+        pointer += node->size;
+
+        node->next = NULL;
+        if (head == NULL) {
+            head = node;
+        } else {
+            tail->next = node;
+        }
+        tail = node;
+    }
+    return head;
 }
 
 
@@ -51,6 +78,13 @@ KVPAIR *deserialize(char *buf, size_t buffer_size) {
  */
 
 KVPAIR *lookup(KVPAIR *list, long key) {
+    KVPAIR *current = list;
+    while (current != NULL) {
+        if (current->key == key) {
+            return current;
+        }
+        current = current->next;
+    }
     return NULL;
 }
 
@@ -73,5 +107,21 @@ KVPAIR *lookup(KVPAIR *list, long key) {
  */
 
 int delete(KVPAIR **list, long key) {
+    KVPAIR *prev = NULL;
+    KVPAIR *current = *list;
+    while (current != NULL) {
+        if (current->key == key) {
+            if (prev == NULL) {
+                *list = current->next;
+            } else {
+                prev->next = current->next;
+            }
+            free(current->val);
+            free(current);
+            return 1;
+        }
+        prev = current;
+        current = current->next;
+    }
     return 0;
 }

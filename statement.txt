@@ -1,0 +1,3 @@
+Referenced powerpoints and code from CS201 for assistance in creating, navigating, rerouting, and deleting linked list data structures
+Referenced post called "how to implement a linked list in C" on stack overflow
+Completed this lab alone.
